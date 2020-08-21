@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: rc-demo-service
+  swagger:
+    package: com.zhou.demo.redisctr.controller
+  redis:
+    host: 10.200.60.92
+
+server:
+  port: 11001
+
+redis:
+  coordinator:
+    enabled: true
+    instanceName: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${random.value}}
+    registerPeriod: 30
+    renewalPeriod: 10
+
+demo:
+  task:
+    enabled: true
+    taskName: "test-task1"
+    periodSecond: 60
+    consumerPool: 20
+
+
+eureka:
+  client:
+    enabled: false
